@@ -1,0 +1,48 @@
+{
+  "name": "predika-frontend",
+  "version": "0.1.0",
+  "description": "Predika Frontend - React SPA",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "@reduxjs/toolkit": "^1.9.7",
+    "react-redux": "^8.1.3",
+    "axios": "^1.6.2",
+    "@stripe/react-stripe-js": "^2.5.0",
+    "@stripe/stripe-js": "^2.4.0",
+    "tailwindcss": "^3.3.6",
+    "tailwind-merge": "^2.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vite": "^5.0.7",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/node": "^20.10.5",
+    "eslint": "^8.55.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "prettier": "^3.1.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "vitest": "^1.1.0",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/jest-dom": "^6.1.5"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "predika-backend",
+  "version": "0.1.0",
+  "description": "Predika Backend - Express API",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "migrate": "tsx src/migrations/run-migrations.ts",
+    "seed": "tsx src/seeds/seed.ts",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sequelize": "^6.35.2",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.1.2",
+    "joi": "^17.11.0",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "aws-sdk": "^2.1585.0",
+    "stripe": "^14.2.1",
+    "winston": "^3.11.0",
+    "uuid": "^9.0.1",
+    "pdfkit": "^0.13.0",
+    "redis": "^4.6.11"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "tsx": "^4.6.2",
+    "@types/node": "^20.10.5",
+    "@types/express": "^4.17.21",
+    "@types/bcryptjs": "^2.4.6",
+    "eslint": "^8.55.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
