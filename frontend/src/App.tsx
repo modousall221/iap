@@ -10,6 +10,9 @@ import Register from './pages/Auth/Register'
 import KYCUpload from './pages/Auth/KYCUpload'
 import Dashboard from './pages/Dashboard'
 import KYCQueue from './pages/Admin/KYCQueue'
+import ProjectList from './pages/Projects/ProjectList'
+import ProjectDetail from './pages/Projects/ProjectDetail'
+import ProjectCreate from './pages/Projects/ProjectCreate'
 
 function App() {
   return (
@@ -46,7 +49,17 @@ function App() {
                   </PrivateRoute>
                 }
               />
-              {/* Additional routes to be added in Week 3+ */}
+              <Route path="/projects" element={<ProjectList />} />
+              <Route path="/projects/:id" element={<ProjectDetail />} />
+              <Route
+                path="/projects/create"
+                element={
+                  <PrivateRoute>
+                    <ProjectCreate />
+                  </PrivateRoute>
+                }
+              />
+              {/* Additional routes to be added in Week 4+ */}
             </Routes>
           </main>
           <Footer />

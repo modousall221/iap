@@ -8,8 +8,10 @@ import logger from './config/logger.js';
 import { sequelize } from './config/database.js';
 import User from './models/User.js';
 import KYCDocument from './models/KYCDocument.js';
+import Project from './models/Project.js';
 import authRoutes from './routes/auth.routes.js';
 import kycRoutes from './routes/kyc.routes.js';
+import projectRoutes from './routes/projects.routes.js';
 
 // Load environment variables
 dotenv.config();
@@ -54,6 +56,9 @@ app.use('/api/auth', authRoutes);
 
 // KYC routes
 app.use('/api/kyc', kycRoutes);
+
+// Projects routes
+app.use('/api/projects', projectRoutes);
 
 // 404 handler
 app.use((req: Request, res: Response) => {

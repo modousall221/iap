@@ -34,7 +34,10 @@ export default function Home() {
 
       <div className="text-center">
         <h2 className="text-2xl font-bold mb-6">Get Started Today</h2>
-        <div className="flex gap-4 justify-center">
+        <div className="flex gap-4 justify-center flex-wrap">
+          <a href="/projects" className="btn btn-outline">
+            Browse Projects
+          </a>
           <a href="/register" className="btn btn-primary">
             Register as Investor
           </a>
@@ -44,11 +47,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-12 p-6 bg-blue-50 rounded-lg border border-blue-200">
-        <h3 className="font-bold mb-2">MVP Status</h3>
+      <div className="mt-12 p-6 bg-green-50 rounded-lg border border-green-200">
+        <h3 className="font-bold mb-2">Now Live: Projects Module</h3>
         <p className="text-gray-700">
-          Predika is currently in Week 0 development. Features are being added weekly.
-          Check back soon for authentication, projects, and investment features.
+          Predika Week 3 is complete! Browse, create, and manage projects. Authentication and KYC verification available.
         </p>
       </div>
     </div>

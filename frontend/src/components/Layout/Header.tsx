@@ -32,7 +32,10 @@ export default function Header() {
         </Link>
 
         {!loading && (
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
+            <Link to="/projects" className="text-gray-700 hover:text-primary font-medium">
+              Projects
+            </Link>
             {!isAuthenticated ? (
               <>
                 <Link to="/login" className="text-gray-700 hover:text-primary font-medium">
@@ -46,6 +49,9 @@ export default function Header() {
               <>
                 <Link to="/dashboard" className="text-gray-700 hover:text-primary font-medium">
                   Dashboard
+                </Link>
+                <Link to="/projects/create" className="text-gray-700 hover:text-primary font-medium">
+                  Create Project
                 </Link>
                 <button
                   onClick={handleLogout}
