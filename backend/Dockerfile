@@ -3,32 +3,34 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
+# Copy workspace root package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci
+# Copy backend workspace
+COPY backend ./backend
 
-# Copy source code
-COPY tsconfig.json ./
-COPY src ./src
+# Install dependencies for backend workspace only
+RUN npm ci --workspace=backend
 
-# Build
-RUN npm run build
+# Build backend
+RUN npm run build --workspace=backend
 
 # Runtime stage
 FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files
+# Copy workspace root package files
 COPY package*.json ./
 
-# Install production dependencies only
-RUN npm ci --only=production
+# Copy backend workspace
+COPY backend ./backend
+
+# Install production dependencies only for backend
+RUN npm ci --only=production --workspace=backend
 
 # Copy built code from builder
-COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/backend/dist ./backend/dist
 
 # Create logs directory
 RUN mkdir -p logs
@@ -41,4 +43,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 EXPOSE 5000
 
 # Start application
-CMD ["npm", "start"]
+CMD ["npm", "start", "--workspace=backend"]

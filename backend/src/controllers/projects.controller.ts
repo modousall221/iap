@@ -70,7 +70,7 @@ export const createProject = async (req: Request, res: Response): Promise<void> 
 // Get all projects (public list + filters)
 export const listProjects = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { status = 'approved', category, country, search, limit = 20, offset = 0 } = req.query;
+    const { status = 'approved', category, country, limit = 20, offset = 0 } = req.query;
 
     const where: any = {
       status: status || 'approved',

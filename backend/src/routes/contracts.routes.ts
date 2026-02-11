@@ -6,7 +6,7 @@ import {
   signContract,
   downloadContractPDF,
 } from '../controllers/contracts.controller.js';
-import { asyncHandler, verifyJWT, verifyRole } from '../middleware/auth.middleware.js';
+import { asyncHandler, verifyJWT } from '../middleware/auth.middleware.js';
 
 const router = Router();
 

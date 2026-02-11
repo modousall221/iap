@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import logger from '../config/logger.js';
 import { validate, registerSchema, loginSchema } from '../utils/validators.js';
@@ -12,9 +12,10 @@ const generateToken = (user: User): string => {
     role: user.role,
   };
 
-  return jwt.sign(payload, process.env.JWT_SECRET!, {
+  // Ensure types match jsonwebtoken signatures
+  return jwt.sign(payload as string | object, process.env.JWT_SECRET as unknown as jwt.Secret, {
     expiresIn: process.env.JWT_EXPIRY || '7d',
-  });
+  } as jwt.SignOptions);
 };
 
 export const register = async (req: Request, res: Response): Promise<void> => {
@@ -159,7 +160,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const logout = (req: Request, res: Response): void => {
+export const logout = async (_req: Request, res: Response): Promise<void> => {
   res.clearCookie('token');
   res.status(200).json({
     success: true,

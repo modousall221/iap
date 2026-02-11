@@ -4,12 +4,10 @@ import User from '../models/User.js';
 import KYCDocument from '../models/KYCDocument.js';
 import { uploadFile } from '../services/s3.service.js';
 import logger from '../config/logger.js';
-import { validate } from '../utils/validators.js';
-import Joi from 'joi';
 
 // Multer configuration for file upload
 const storage = multer.memoryStorage();
-const fileFilter = (req: any, file: any, cb: any) => {
+const fileFilter = (_req: any, file: any, cb: any) => {
   const allowedMimes = ['image/jpeg', 'image/png', 'application/pdf'];
   if (allowedMimes.includes(file.mimetype)) {
     cb(null, true);

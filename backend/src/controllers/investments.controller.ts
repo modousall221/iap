@@ -88,13 +88,13 @@ export const listInvestments = async (req: Request, res: Response): Promise<void
       return;
     }
 
-    const { projectId } = req.query;
+    const projectId = req.query.projectId;
 
     const where: any = {};
 
     if (projectId) {
       // Entrepreneur viewing investments in their project
-      const project = await Project.findByPk(projectId);
+      const project = await Project.findByPk(String(projectId));
       if (!project) {
         res.status(404).json({ error: 'Project not found' });
         return;
@@ -105,7 +105,7 @@ export const listInvestments = async (req: Request, res: Response): Promise<void
         return;
       }
 
-      where.projectId = projectId;
+      where.projectId = String(projectId);
     } else {
       // Investor viewing their own investments
       where.investorId = req.user.id;

@@ -27,7 +27,7 @@ export default function ProjectList() {
   const [category, setCategory] = useState('')
   const [country, setCountry] = useState('')
   const [search, setSearch] = useState('')
-  const [limit, setLimit] = useState(20)
+  const [limit] = useState(20)
   const [offset, setOffset] = useState(0)
 
   useEffect(() => {

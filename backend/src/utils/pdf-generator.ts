@@ -1,5 +1,4 @@
 import PDFDocument from 'pdfkit';
-import { Readable } from 'stream';
 
 export interface ContractTerms {
   projectTitle: string;
@@ -28,9 +27,9 @@ export const generateContractPDF = async (terms: ContractTerms): Promise<Buffer>
 
     const chunks: Buffer[] = [];
 
-    doc.on('data', (chunk) => chunks.push(chunk));
+    doc.on('data', (chunk: Buffer) => chunks.push(chunk));
     doc.on('end', () => resolve(Buffer.concat(chunks)));
-    doc.on('error', (err) => reject(err));
+    doc.on('error', (err: Error) => reject(err));
 
     // Header
     doc.fontSize(20).font('Helvetica-Bold').text('PREDIKA INVESTMENT CONTRACT', { align: 'center' });

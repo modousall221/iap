@@ -7,8 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#1e40af',
-        secondary: '#7c3aed',
+        // Brand colors from Predika logo
+        primary: '#14b8a6', // turquoise Predika
+        'primary-dark': '#0f766e',
+        secondary: '#1e4e63', // bleu foncé logo
+        brand: '#13b6a6',
+        'brand-dark': '#0f5f61',
         success: '#10b981',
         danger: '#ef4444',
         warning: '#f59e0b',

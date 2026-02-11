@@ -6,11 +6,6 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import logger from './config/logger.js';
 import { sequelize } from './config/database.js';
-import User from './models/User.js';
-import KYCDocument from './models/KYCDocument.js';
-import Project from './models/Project.js';
-import Investment from './models/Investment.js';
-import Contract from './models/Contract.js';
 import authRoutes from './routes/auth.routes.js';
 import kycRoutes from './routes/kyc.routes.js';
 import projectRoutes from './routes/projects.routes.js';
@@ -42,12 +37,12 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 // Health check
-app.get('/health', (req: Request, res: Response) => {
+app.get('/health', (_req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 // API Routes
-app.get('/api/v1/health', (req: Request, res: Response) => {
+app.get('/api/v1/health', (_req: Request, res: Response) => {
   res.json({
     status: 'ok',
     version: '1.0.0',
@@ -80,7 +75,7 @@ app.use((req: Request, res: Response) => {
 });
 
 // Error handler
-app.use((err: any, req: Request, res: Response, next: any) => {
+app.use((err: any, _req: Request, res: Response) => {
   logger.error('Unhandled error:', err);
   res.status(err.status || 500).json({
     error: err.message || 'Internal Server Error',

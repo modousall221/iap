@@ -277,7 +277,7 @@ export default function ContractView() {
             <h2 className="text-2xl font-bold mb-6">Terms & Conditions</h2>
 
             <div className="space-y-3">
-              {terms.conditions.map((condition, index) => (
+              {terms.conditions.map((condition: any, index: number) => (
                 <div key={index} className="flex gap-3">
                   <span className="text-primary font-bold">{index + 1}.</span>
                   <p className="text-gray-700">{condition}</p>

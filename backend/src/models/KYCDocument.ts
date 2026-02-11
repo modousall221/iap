@@ -3,7 +3,7 @@ import sequelize from '../config/database.js';
 import { v4 as uuidv4 } from 'uuid';
 
 interface KYCDocumentAttributes {
-  id: string;
+  id?: string;
   userId: string;
   documentType: 'id' | 'rib' | 'kbis' | 'proof_of_address';
   fileName: string;
