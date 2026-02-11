@@ -2,9 +2,12 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import logger from './config/logger.js';
 import { sequelize } from './config/database.js';
+import User from './models/User.js';
+import authRoutes from './routes/auth.routes.js';
 
 // Load environment variables
 dotenv.config();
@@ -20,6 +23,7 @@ app.use(cors({
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(cookieParser()); // Parse cookies
 
 // Rate limiting
 const limiter = rateLimit({
@@ -34,7 +38,7 @@ app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// API Routes (to be added in phases)
+// API Routes
 app.get('/api/v1/health', (req: Request, res: Response) => {
   res.json({
     status: 'ok',
@@ -42,6 +46,9 @@ app.get('/api/v1/health', (req: Request, res: Response) => {
     timestamp: new Date().toISOString()
   });
 });
+
+// Auth routes
+app.use('/api/auth', authRoutes);
 
 // 404 handler
 app.use((req: Request, res: Response) => {

@@ -3,7 +3,11 @@ import { Provider } from 'react-redux'
 import store from './store'
 import Header from './components/Layout/Header'
 import Footer from './components/Layout/Footer'
+import PrivateRoute from './components/PrivateRoute'
 import Home from './pages/Home'
+import Login from './pages/Auth/Login'
+import Register from './pages/Auth/Register'
+import Dashboard from './pages/Dashboard'
 
 function App() {
   return (
@@ -14,7 +18,17 @@ function App() {
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
-              {/* Routes to be added in Week 1+ */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route
+                path="/dashboard"
+                element={
+                  <PrivateRoute>
+                    <Dashboard />
+                  </PrivateRoute>
+                }
+              />
+              {/* Additional routes to be added in Week 2+ */}
             </Routes>
           </main>
           <Footer />
