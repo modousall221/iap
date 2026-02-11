@@ -13,6 +13,7 @@ import KYCQueue from './pages/Admin/KYCQueue'
 import ProjectList from './pages/Projects/ProjectList'
 import ProjectDetail from './pages/Projects/ProjectDetail'
 import ProjectCreate from './pages/Projects/ProjectCreate'
+import InvestmentFlow from './pages/Invest/InvestmentFlow'
 
 function App() {
   return (
@@ -59,7 +60,15 @@ function App() {
                   </PrivateRoute>
                 }
               />
-              {/* Additional routes to be added in Week 4+ */}
+              <Route
+                path="/invest/:projectId"
+                element={
+                  <PrivateRoute>
+                    <InvestmentFlow />
+                  </PrivateRoute>
+                }
+              />
+              {/* Additional routes to be added in Week 5+ */}
             </Routes>
           </main>
           <Footer />
