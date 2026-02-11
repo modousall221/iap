@@ -10,10 +10,12 @@ import User from './models/User.js';
 import KYCDocument from './models/KYCDocument.js';
 import Project from './models/Project.js';
 import Investment from './models/Investment.js';
+import Contract from './models/Contract.js';
 import authRoutes from './routes/auth.routes.js';
 import kycRoutes from './routes/kyc.routes.js';
 import projectRoutes from './routes/projects.routes.js';
 import investmentRoutes from './routes/investments.routes.js';
+import contractRoutes from './routes/contracts.routes.js';
 
 // Load environment variables
 dotenv.config();
@@ -64,6 +66,9 @@ app.use('/api/projects', projectRoutes);
 
 // Investments routes
 app.use('/api/investments', investmentRoutes);
+
+// Contracts routes
+app.use('/api/contracts', contractRoutes);
 
 // 404 handler
 app.use((req: Request, res: Response) => {

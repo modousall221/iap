@@ -14,6 +14,7 @@ import ProjectList from './pages/Projects/ProjectList'
 import ProjectDetail from './pages/Projects/ProjectDetail'
 import ProjectCreate from './pages/Projects/ProjectCreate'
 import InvestmentFlow from './pages/Invest/InvestmentFlow'
+import ContractView from './pages/Contracts/ContractView'
 
 function App() {
   return (
@@ -68,7 +69,15 @@ function App() {
                   </PrivateRoute>
                 }
               />
-              {/* Additional routes to be added in Week 5+ */}
+              <Route
+                path="/contracts/:contractId"
+                element={
+                  <PrivateRoute>
+                    <ContractView />
+                  </PrivateRoute>
+                }
+              />
+              {/* Additional routes to be added in Week 6+ */}
             </Routes>
           </main>
           <Footer />
