@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import api from '../../services/api'
 
 interface User {
@@ -94,10 +94,13 @@ export default function Dashboard() {
         <div className="card">
           <h2 className="text-xl font-bold mb-4">Next Steps</h2>
           {user.kycStatus === 'pending' ? (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <p className="text-blue-800">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+              <p className="text-blue-800 mb-4">
                 Your KYC verification is pending. Please upload your documents to continue.
               </p>
+              <Link to="/kyc" className="btn btn-primary">
+                Upload Documents
+              </Link>
             </div>
           ) : user.kycStatus === 'approved' ? (
             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
@@ -106,10 +109,22 @@ export default function Dashboard() {
               </p>
             </div>
           ) : (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <p className="text-red-800">
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+              <p className="text-red-800 mb-4">
                 Your KYC verification was rejected. Please contact support.
               </p>
+              <Link to="/kyc" className="btn btn-outline">
+                Resubmit Documents
+              </Link>
+            </div>
+          )}
+
+          {user.role === 'admin' && (
+            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mt-4">
+              <p className="text-purple-800 mb-4 font-medium">Admin Panel</p>
+              <Link to="/admin/kyc-queue" className="btn bg-purple-600 hover:bg-purple-700 text-white">
+                Review KYC Queue
+              </Link>
             </div>
           )}
         </div>

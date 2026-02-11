@@ -7,7 +7,9 @@ import PrivateRoute from './components/PrivateRoute'
 import Home from './pages/Home'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
+import KYCUpload from './pages/Auth/KYCUpload'
 import Dashboard from './pages/Dashboard'
+import KYCQueue from './pages/Admin/KYCQueue'
 
 function App() {
   return (
@@ -21,6 +23,14 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route
+                path="/kyc"
+                element={
+                  <PrivateRoute>
+                    <KYCUpload />
+                  </PrivateRoute>
+                }
+              />
+              <Route
                 path="/dashboard"
                 element={
                   <PrivateRoute>
@@ -28,7 +38,15 @@ function App() {
                   </PrivateRoute>
                 }
               />
-              {/* Additional routes to be added in Week 2+ */}
+              <Route
+                path="/admin/kyc-queue"
+                element={
+                  <PrivateRoute>
+                    <KYCQueue />
+                  </PrivateRoute>
+                }
+              />
+              {/* Additional routes to be added in Week 3+ */}
             </Routes>
           </main>
           <Footer />
